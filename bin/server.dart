@@ -23,7 +23,7 @@ Response _localizationHandler(Request request) {
   final langCode = request.params['langcode'];
 
   return Response.ok(
-    {'text': 'Hello World'},
+    '{"text": "Hello World"}',
     headers: {'Content-Type': 'application/json'},
   );
 }
