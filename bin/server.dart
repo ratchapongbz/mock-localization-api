@@ -11,7 +11,7 @@ import 'localization.dart';
 final _router = Router()
   ..get('/', _rootHandler)
   ..get('/echo/<message>', _echoHandler)
-  ..get('/localization', _localizationHandler);
+  ..get('/localization/<langcode>', _localizationHandler);
 
 Response _rootHandler(Request request) {
   return Response.ok('Hello, World!\n');
