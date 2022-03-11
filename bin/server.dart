@@ -25,7 +25,7 @@ Response _echoHandler(Request request) {
 Response _localizationHandler(Request request) {
   final langCode = request.params['langcode'];
 
-  if (langCode == null) {
+  if (langCode != null) {
     final translation = Localization.translations[langCode];
     if (translation != null) {
       return Response.ok(
