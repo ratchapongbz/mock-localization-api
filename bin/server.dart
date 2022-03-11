@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart';
 import 'package:shelf_router/shelf_router.dart';
+
+import 'localization.dart';
 
 // Configure routes.
 final _router = Router()
@@ -22,10 +25,17 @@ Response _echoHandler(Request request) {
 Response _localizationHandler(Request request) {
   final langCode = request.params['langcode'];
 
-  return Response.ok(
-    '{"text": "Hello World"}',
-    headers: {'Content-Type': 'application/json'},
-  );
+  if (langCode == null) {
+    final translation = Localization.translations[langCode];
+    if (translation != null) {
+      return Response.ok(
+        jsonEncode(translation),
+        headers: {'Content-Type': 'application/json'},
+      );
+    }
+  }
+
+  return Response.notFound('{}');
 }
 
 void main(List<String> args) async {
