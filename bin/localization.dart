@@ -5,7 +5,7 @@ class Localization {
       'best_football_player_name': 'L. Messi',
     },
     'th': {
-      'hello_world': 'Hello World !!!',
+      'hello_world': 'สวัสดีชาวโลก !!!',
       'best_football_player_name': 'ล. เมสซี่',
     },
   };
